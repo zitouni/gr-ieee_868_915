@@ -1,0 +1,27 @@
+/* -*- c++ -*- */
+
+#define IEEE_868_915_API
+
+%include "gnuradio.i"			// the common stuff
+
+//load generated python docstrings
+%include "ieee_868_915_swig_doc.i"
+
+%{
+#include "ieee_868_915/symbols_to_chips_bs.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+#include "ieee_868_915/packet_sink.h"
+%}
+
+
+%include "ieee_868_915/symbols_to_chips_bs.h"
+GR_SWIG_BLOCK_MAGIC2(ieee_868_915, symbols_to_chips_bs);
+
+%include "ieee_868_915/packet_sink.h"
+GR_SWIG_BLOCK_MAGIC2(ieee_868_915, packet_sink);

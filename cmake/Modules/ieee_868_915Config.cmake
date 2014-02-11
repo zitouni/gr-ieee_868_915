@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_IEEE_868_915 ieee_868_915)
+
+FIND_PATH(
+    IEEE_868_915_INCLUDE_DIRS
+    NAMES ieee_868_915/api.h
+    HINTS $ENV{IEEE_868_915_DIR}/include
+        ${PC_IEEE_868_915_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREEFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    IEEE_868_915_LIBRARIES
+    NAMES gnuradio-ieee_868_915
+    HINTS $ENV{IEEE_868_915_DIR}/lib
+        ${PC_IEEE_868_915_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(IEEE_868_915 DEFAULT_MSG IEEE_868_915_LIBRARIES IEEE_868_915_INCLUDE_DIRS)
+MARK_AS_ADVANCED(IEEE_868_915_LIBRARIES IEEE_868_915_INCLUDE_DIRS)
+

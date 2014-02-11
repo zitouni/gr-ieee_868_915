@@ -1,0 +1,15 @@
+<block>
+  <name>Symbols to chips bs</name>
+  <key>ieee_868_915_symbols_to_chips_bs</key>
+  <category>IEEE_868_915</category>
+  <import>import ieee_868_915</import>
+  <make>ieee_868_915.symbols_to_chips_bs()</make>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>short</type>
+  </source>
+</block>

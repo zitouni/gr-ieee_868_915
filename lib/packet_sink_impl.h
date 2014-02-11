@@ -36,10 +36,6 @@ namespace gr {
      //gr::ieee_868_915::packet_sink::sptr
      //typedef boost::shared_ptr<packet_sink> sptr;
 
-      static sptr make (gr::msg_queue::sptr target_queue,
-			      int threshold = -1	                // -1 -> use default
-			      );
-
      private:
       // Nothing to declare in this block.
    enum state_t {STATE_SYNC_SEARCH, STATE_HAVE_SYNC, STATE_HAVE_HEADER};
@@ -106,8 +102,7 @@ protected:
 
 
      public:
-       packet_sink_impl(gr::msg_queue::sptr target_queue,
-				int threshold);
+       packet_sink_impl(int threshold);
       ~packet_sink_impl();
 
       // Where all the action really happens

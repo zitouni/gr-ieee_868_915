@@ -31,7 +31,7 @@ list(APPEND ieee_868_915_sources
 )
 
 add_library(gnuradio-ieee_868_915 SHARED ${ieee_868_915_sources})
-target_link_libraries(gnuradio-ieee_868_915 ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
+target_link_libraries(gnuradio-ieee_868_915 ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
 set_target_properties(gnuradio-ieee_868_915 PROPERTIES DEFINE_SYMBOL "gnuradio_ieee_868_915_EXPORTS")
 
 ########################################################################

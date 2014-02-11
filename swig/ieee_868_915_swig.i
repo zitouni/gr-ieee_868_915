@@ -10,13 +10,6 @@
 %{
 #include "ieee_868_915/symbols_to_chips_bs.h"
 #include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
-#include "ieee_868_915/packet_sink.h"
 %}
 
 

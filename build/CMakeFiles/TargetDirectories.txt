@@ -1,8 +1,0 @@
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/swig/CMakeFiles/_ieee_868_915_swig.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/swig/CMakeFiles/_ieee_868_915_swig_doc_tag.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/swig/CMakeFiles/_ieee_868_915_swig_swig_tag.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/lib/CMakeFiles/gnuradio-ieee_868_915.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/apps/CMakeFiles/pygen_apps_9a6dd.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/python/CMakeFiles/pygen_python_ba7c2.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/swig/CMakeFiles/pygen_swig_5c906.dir
-/home/zitouni/gnuradio-3.7.2/gr-ieee_868_915/build/CMakeFiles/uninstall.dir

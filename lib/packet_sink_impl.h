@@ -102,7 +102,7 @@ protected:
 
 
      public:
-       packet_sink_impl(int threshold);
+  	   packet_sink_impl(gr::msg_queue::sptr target_queue,	int threshold);
       ~packet_sink_impl();
 
       // Where all the action really happens

@@ -25,6 +25,8 @@
 #include <ieee_868_915/api.h>
 #include <gnuradio/sync_block.h>
 
+#include <gnuradio/msg_queue.h>
+
 namespace gr {
   namespace ieee_868_915 {
 
@@ -46,7 +48,7 @@ namespace gr {
        * class. ieee_868_915::packet_sink::make is the public interface for
        * creating new instances.
        */
-      static sptr make();
+      static sptr make(gr::msg_queue::sptr target_queue,	int threshold);
     };
 
   } // namespace ieee_868_915

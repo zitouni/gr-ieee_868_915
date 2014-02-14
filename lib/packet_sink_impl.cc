@@ -59,9 +59,9 @@ namespace gr {
   namespace ieee_868_915 {
 
 packet_sink::sptr
-packet_sink::make() 
+packet_sink::make(gr::msg_queue::sptr target_queue,	int threshold)
 {
-	return gnuradio::get_initial_sptr(new packet_sink_impl(-1));
+	return gnuradio::get_initial_sptr(new packet_sink_impl(target_queue, threshold));
 }
 
 
@@ -154,10 +154,10 @@ packet_sink_impl::decode_chips(unsigned int chips){
     /*
      * The private constructor
      */
-    packet_sink_impl::packet_sink_impl(int threshold)
+    packet_sink_impl::packet_sink_impl(gr::msg_queue::sptr target_queue,	int threshold)
       : gr::sync_block("packet_sink",
               gr::io_signature::make(1, 1, sizeof(float)),
-              gr::io_signature::make(0, 0, 0)), d_threshold(threshold == -1 ? DEFAULT_THRESHOLD : threshold)
+              gr::io_signature::make(0, 0, 0)), d_target_queue(target_queue), d_threshold(threshold == -1 ? DEFAULT_THRESHOLD : threshold)
     {
   d_sync_vector = 0xA7;
   d_processed = 0;

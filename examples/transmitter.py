@@ -110,10 +110,10 @@ def main():
     
     tb.start()  #Begin the execution of flot graph
     #like in iee802.15.4 construct and send packets    
-    for i in range(100):
+    for i in range(100000):
         print "envoi du message %d: "% (i+1,)
         send_pkt(struct.pack('9B', 0x1, 0x80, 0x80, 0xff, 0xff, 0x10, 0x0, 0x20, 0x0))
-        time.sleep(1)
+        time.sleep(2)
      #wait transmission to finish 
      
     tb.wait()

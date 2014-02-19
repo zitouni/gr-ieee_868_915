@@ -100,14 +100,14 @@ class bpsk_demodulator(gr.hier_block2):
         print "\nDemodulator:"
         print "bits per symbol:     %d"   % self.bits_per_symbol()
         print "Gray code:           %s"   % self._gray_code
-        print "RRC roll-off factor: %.2f" % self._excess_bw
-        print "Costas Loop alpha:   %.2e" % self._costas_alpha
-        print "Costas Loop beta:    %.2e" % self._costas_beta
-        print "M&M mu:              %.2f" % self._mm_mu
-        print "M&M mu gain:         %.2e" % self._mm_gain_mu
-        print "M&M omega:           %.2f" % self._mm_omega
-        print "M&M omega gain:      %.2e" % self._mm_gain_omega
-        print "M&M omega limit:     %.2f" % self._mm_omega_relative_limit
+        #print "RRC roll-off factor: %.2f" % self._excess_bw
+        #print "Costas Loop alpha:   %.2e" % self._costas_alpha
+        #print "Costas Loop beta:    %.2e" % self._costas_beta
+        #print "M&M mu:              %.2f" % self._mm_mu
+        #print "M&M mu gain:         %.2e" % self._mm_gain_mu
+        #print "M&M omega:           %.2f" % self._mm_omega
+        #print "M&M omega gain:      %.2e" % self._mm_gain_omega
+        #print "M&M omega limit:     %.2f" % self._mm_omega_relative_limit
 
 
     def add_options(parser):

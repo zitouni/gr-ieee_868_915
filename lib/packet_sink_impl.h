@@ -38,7 +38,7 @@ namespace gr {
 
      private:
       // Nothing to declare in this block.
-   enum state_t {STATE_SYNC_SEARCH, STATE_HAVE_SYNC, STATE_HAVE_HEADER};
+   enum state_t {STATE_SYNC_SEARCH, STATE_SFD_SEARCH, STATE_HAVE_SYNC, STATE_HAVE_HEADER};
 
   static const int MSG_LEN_POS   = 8+1;         // 8 byte sos header, 1 byte AM type
   static const int MAX_PKT_LEN    = 128 - MSG_LEN_POS - 1; // remove header and CRC
@@ -53,10 +53,13 @@ namespace gr {
 
   unsigned short       		d_shift_reg;		// used to look for sync_vector
 
+  int nbr_preambles;
+
   int bit_0;
   int bit_1;
+  int is_sfd;
   int bit_breamble;
-  int bit_sfd;
+  int byte_sfd;
   int nbr_bit_sfd;
   int inc;
   bool find_preamble;
@@ -88,6 +91,7 @@ protected:
 //				int threshold);
   
   void enter_search();
+  void enter_search_sfd();
   void enter_have_sync();
   void enter_have_header(int payload_len);
   unsigned char decode_chips(unsigned int chips);

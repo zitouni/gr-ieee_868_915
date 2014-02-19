@@ -31,7 +31,7 @@
 #include <stdio.h>
 
 //decimal coding of the squence chips of bits
-static const unsigned int d_symbol_table[] = {31432,  
+static const unsigned short d_symbol_table[] = {31432,
 				               1335}; 
 //for sequence number 111101011001000
  //for sequence number 000010100110111
@@ -80,8 +80,26 @@ namespace gr {
 	const unsigned char *in = (const unsigned char *) input_items[0];
         unsigned short *out = (unsigned short *) output_items[0];
 
+        int byte = 0, nbr_bit =0;
+
            for (int i = 0; i < noutput_items; i+=1){
-     		 memcpy(&out[i], &d_symbol_table[(unsigned short)(in[i]&0x1)], sizeof(unsigned short));
+
+     		   memcpy(&out[i], &d_symbol_table[(unsigned short)(in[i])], sizeof(unsigned short));
+
+	    	   if (in[i] == 0){
+	     		  byte = byte << 1;
+	     		  nbr_bit++;
+	    	   }
+	    	   //construct the stream of the 0 bits
+	    	   if (in[i] ==1 ){
+	    		   byte = byte << 1 | 1;
+	    		   nbr_bit++;
+	    	   }
+	    	   if (nbr_bit == 8){
+	    		   printf("The byte value is : %x \n", byte);
+	    		   nbr_bit =0;
+	    		   byte = 0;
+	    	   }
 		}
    	 // end of per stream processing
 

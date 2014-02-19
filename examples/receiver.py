@@ -4,6 +4,8 @@ Created on Jul 18, 2011
 
 @author: rafik
 '''
+
+import os
 from gnuradio import gr, gru
 
 from gnuradio import eng_notation
@@ -45,10 +47,10 @@ def get_options():
     parser.add_option("-a", "--address", type="string", default="addr=192.168.10.2", 
                        help="Address of UHD device, [default=%default]") 
         
-    parser.add_option("-S", "--samples-per-symbol", type = "float", default=2,
+    parser.add_option("-S", "--samples-per-symbol", type = "float", default=8,
                           help="set samples/symbol [default=%default]")
     
-    parser.add_option("-s", "--samp-rate", type="eng_float", default=0.5e6,
+    parser.add_option("-s", "--samp-rate", type="eng_float", default=2e6,
                       help="Select modulation sample rate (default=%default)")
     
     parser.add_option("-r", "--data-rate", type="eng_float", default=250e3,
@@ -122,6 +124,7 @@ def main():
 
 if __name__ == '__main__':
     try:
+        print 'Blocked waiting for GDB attach (pid = %d)' % (os.getpid(),)
         main()
     except KeyboardInterrupt: 
         pass

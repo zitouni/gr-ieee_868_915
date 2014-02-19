@@ -68,21 +68,34 @@ def make_ieee802_15_4_packet(FCF, seqNr, addressInfo, payload, pad_for_usrp=True
     b = len(addressInfo)
     if len(payload) > MAX_PKT_SIZE - 5 - len(addressInfo):
         raise ValueError, "len(payload) must be in [0, %d]" %(MAX_PKT_SIZE)
+    
+    
+    pktno = struct.unpack('H', FCF[0:2])
+   # print "pktno = %4d", pktno
 
     SHR = struct.pack("BBBBB", 0, 0, 0, 0, SFD)
+    PHR = 3 + len(addressInfo) + len(payload) + 2
     PHR = struct.pack("B", 3 + len(addressInfo) + len(payload) + 2)
     MPDU = FCF + struct.pack("B", seqNr) + addressInfo + payload
+    MPDU_len = len(FCF + struct.pack("B", seqNr) + addressInfo + payload)
+    
     crc = crc16.CRC16()
     crc.update(MPDU)
 
     FCS = struct.pack("H", crc.intchecksum())
 
     pkt = ''.join((SHR, PHR, MPDU, FCS))
+    
+    len_pkt = len(pkt)
+    
+    print "  payload: " + str(map(hex, map(ord, MPDU)))
 
     if pad_for_usrp:
         # note that we have 16 samples which go over the USB for each bit
         pkt = pkt + (_npadding_bytes(len(pkt), 8) * '\x00')+0*'\x00'
 
+    len_pkt = len(pkt)
+    
     return pkt
 
 def _npadding_bytes(pkt_byte_len, spb):
@@ -125,6 +138,8 @@ def make_FCF(frameType=1, securityEnabled=0, framePending=0, acknowledgeRequest=
         raise ValueError, " must be < "
     if sourceAddressingMode >= 2**2:
         raise ValueError, " must be < "
+    
+    FCF =  frameType + (securityEnabled << 3) + (framePending << 4) + (acknowledgeRequest << 5) + (intraPAN << 6) + (destinationAddressingMode << 10) + (sourceAddressingMode << 14)
   
     return struct.pack("H", frameType
                        + (securityEnabled << 3)

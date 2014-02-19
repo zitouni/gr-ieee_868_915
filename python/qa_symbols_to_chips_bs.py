@@ -19,6 +19,8 @@
 # Boston, MA 02110-1301, USA.
 # 
 
+import os
+
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 import ieee_868_915
@@ -33,7 +35,9 @@ class qa_symbols_to_chips_bs (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-
+    
+        print 'Blocked waiting for GDB attach (pid = %d)' % (os.getpid(),)
+	raw_input ('Press Enter to continue: ')
 	src_data = (0, 1)
         expected_result = (31432, 1335)
 
@@ -52,4 +56,5 @@ class qa_symbols_to_chips_bs (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
+
     gr_unittest.run(qa_symbols_to_chips_bs, "qa_symbols_to_chips_bs.xml")
